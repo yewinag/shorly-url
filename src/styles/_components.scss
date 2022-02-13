@@ -1,0 +1,24 @@
+// buttons
+$el-btn: 'btn';
+$primary: 'primary';
+.#{$el-btn} {
+  // using interpolation
+  background: transparent;
+  color: inherit;
+  min-width: 6.25em;
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  &.#{$primary} {
+    background: $color-primary-cyan;
+    color: $color-narural-white;
+    a {
+      &:hover {
+        color: $color-natural-gray;
+      }
+    }
+  }
+  // for mobile screen
+  @media only screen and (max-width: $mobile-screen) {
+    width: 100%;
+  }
+}
