@@ -1,0 +1,284 @@
+// 1.import *
+// 2.reference *
+// 3.interpolation *
+// 4. content directive @mixin
+// 5. %placeholders *
+// 6. function
+// 7. Lists and @each directive *
+@import url(./reset.scss);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+$color-primary-cyan: hsl(180, 66%, 49%);
+$color-primary-dark: hsl(257, 27%, 26%);
+$color-secondary: hsl(0, 87%, 67%);
+$color-narural-white: #ffffff;
+$color-layout-gray: #efefef;
+$color-natural-gray: hsl(0, 0%, 75%);
+$color-natural-grayish: hsl(257, 7%, 63%);
+$color-narural-dark-blue: hsl(255, 11%, 22%);
+$color-narural-dark-violet: hsl(260, 8%, 14%);
+
+// Font Variables
+$fontFamily: 'Poppins', sans-serif;
+//@font-weight
+$font-weight-normal: 500;
+$font-weight-bold: 700;
+// @font-size
+$heading-1: 5rem;
+$heading-2: 3rem;
+$heading-3: 2rem;
+$heading-4: 1.3rem;
+$regular: 1.125rem; // normal text
+
+// Responsive Breakpoints
+$mobile-screen: 23.438rem;
+$web-screen: 90rem;
+
+// @height
+$heading-height: 1em;
+$input-height: 2.5em;
+// @border width
+$border-width-1: 0.125em;
+$border-width-2: 0.25em;
+
+html {
+  box-sizing: border-box;
+  font-family: $fontFamily;
+  font-size: $regular;
+  font-weight: $font-weight-normal;
+  color: $color-natural-grayish;
+}
+
+// Global Resets
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+%app-container {
+  padding: 0 0.938em;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $web-screen;
+}
+%flux-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+%layout-break {
+  padding: 3em 0;
+}
+.header {
+  @extend %app-container;
+  @extend %flux-layout;
+  justify-content: space-between;
+  min-height: 4rem;
+  .nav {
+    @extend %flux-layout;
+    ul {
+      list-style: none;
+      display: inherit;
+      margin-left: 1rem;
+      li {
+        margin: 0 0 0 2rem;
+      }
+    }
+  }
+}
+
+.article {
+  // header article
+  background-color: inherit;
+  .article-header {
+    @extend %app-container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3em;
+    @extend %layout-break;
+    h1 {
+      font-weight: $font-weight-bold;
+      font-size: $heading-1;
+      color: $color-narural-dark-violet;
+      line-height: $heading-height;
+    }
+    h2 {
+      font-size: $regular;
+      padding: 0 0.5em;
+    }
+  }
+}
+// article search form
+.article-search-form {
+  @extend %app-container;
+  @extend %layout-break;
+  form {
+    padding: 1.7em;
+    border-radius: 0.25em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-color: $color-primary-dark;
+    @extend %flux-layout;
+    input {
+      width: 90%;
+
+      padding: 1em;
+      border-radius: 0.5em;
+      height: $input-height;
+    }
+    button {
+      height: $input-height;
+    }
+  }
+  .result-section {
+    .card {
+      @extend %flux-layout;
+      background-color: $color-narural-white;
+      padding: 1em;
+      border-radius: 0.5em;
+      margin: 1em 0;
+      .res-link {
+        margin-right: 1em;
+        color: $color-primary-cyan;
+      }
+    }
+  }
+}
+// article-static
+.static {
+  header {
+    text-align: center;
+    padding: 1em 0;
+    h4 {
+      font-size: $heading-3;
+      color: $color-narural-dark-blue;
+      font-weight: bold;
+    }
+    p {
+      padding: 0 30em;
+      font-size: inherit;
+    }
+  }
+  .service {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2em;
+    padding: 2em 0;
+    .service-card {
+      padding: 2em;
+      background-color: $color-narural-white;
+      border-radius: 0.4rem;
+      &:nth-child(1) {
+        grid-row: 1/3 span;
+      }
+      &:nth-child(2) {
+        grid-row: 2/3 span;
+      }
+      &:nth-child(3) {
+        grid-row: 3/3 span;
+      }
+      picture {
+        width: 4em;
+        height: 4em;
+        display: flex;
+        align-items: center;
+        background: $color-narural-dark-violet;
+        border-radius: 50%;
+        margin-top: -4.2em;
+        img {
+          margin: auto;
+        }
+      }
+      h4 {
+        padding: 1em 0;
+        font-size: $heading-4;
+        font-weight: bold;
+        color: $color-narural-dark-violet;
+      }
+    }
+  }
+}
+.boost-article {
+  background-repeat: round;
+  background-color: $color-narural-dark-blue;
+
+  .boost {
+    @extend %layout-break;
+    @extend %flux-layout;
+    justify-content: center;
+    flex-direction: column;
+    h4 {
+      font-size: $heading-3;
+      color: $color-narural-white;
+    }
+  }
+}
+.footer {
+  background-color: $color-narural-dark-violet;
+  color: $color-narural-white;
+  @extend %layout-break;
+  .footer-section {
+    @extend %app-container;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    .footer-logo {
+      font-size: $heading-4;
+    }
+    .footer-link-layout {
+      @extend %flux-layout;
+    }
+    .footer-social {
+      @extend %flux-layout;
+      justify-content: center;
+      align-items: flex-start;
+      .icon {
+        width: 2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+      }
+      a {
+        &:hover,
+        &:focus {
+          filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+            brightness(104%) contrast(97%);
+        }
+      }
+    }
+  }
+  ul {
+    font-size: 0.8rem;
+    li {
+      padding: 0.4rem 0;
+      a {
+        &:hover {
+          color: $color-primary-cyan;
+        }
+      }
+    }
+  }
+}
+//  10 - 0.625 em, 14 - 0.875, 16 - 1em
+// common use component
+// global btn usage
+$el-btn: 'btn';
+$primary: 'primary';
+.#{$el-btn} {
+  // using interpolation
+  background: transparent;
+  color: inherit;
+  min-width: 6.25em;
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  &.#{$primary} {
+    background: $color-primary-cyan;
+    color: $color-narural-white;
+    a {
+      &:hover {
+        color: $color-natural-gray;
+      }
+    }
+  }
+}
