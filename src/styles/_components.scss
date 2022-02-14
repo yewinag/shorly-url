@@ -1,6 +1,7 @@
 // buttons
 $el-btn: 'btn';
 $primary: 'primary';
+$icon: 'icon-btn';
 .#{$el-btn} {
   // using interpolation
   background: transparent;
@@ -17,8 +18,14 @@ $primary: 'primary';
       }
     }
   }
+
   // for mobile screen
   @media only screen and (max-width: $mobile-screen) {
     width: 100%;
+    &.#{$icon} {
+      padding: 0%;
+      width: inherit;
+      min-width: inherit;
+    }
   }
 }

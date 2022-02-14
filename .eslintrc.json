@@ -20,6 +20,8 @@
     "prettier" // eslint-plugin-prettier
   ],
   "rules": {
+    "react/button-has-type": "off",
+    "react/prop-types": "off",
     "no-param-reassign": 0,
     "import/prefer-default-export": "off", // prefer default export
     "prettier/prettier": [
