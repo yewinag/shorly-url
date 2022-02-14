@@ -57,13 +57,13 @@ a {
       }
     }
   }
-  .menu-btn {
+  .icon-btn {
     img {
       height: 1.2rem;
     }
   }
   @media only screen and (min-width: $mobile-screen) {
-    .menu-btn {
+    .icon-btn {
       display: none;
     }
   }
@@ -103,7 +103,7 @@ a {
         margin: 1rem 0;
       }
     }
-    .menu-btn {
+    .icon-btn {
       display: block;
     }
   }
