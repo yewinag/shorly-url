@@ -17,13 +17,16 @@
   },
   "plugins": [
     "react", // eslint-plugin-react
-    "prettier" // eslint-plugin-prettier
+    "prettier", // eslint-plugin-prettier
+    "react-hooks"
   ],
   "rules": {
     "react/button-has-type": "off",
     "react/prop-types": "off",
     "no-param-reassign": 0,
     "import/prefer-default-export": "off", // prefer default export
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", //
     "prettier/prettier": [
       // "prettier/prettier" rule from "eslint-plugin-prettier"
       "error", // violation of the rule will cause an error
