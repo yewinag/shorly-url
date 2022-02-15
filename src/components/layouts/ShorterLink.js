@@ -18,7 +18,7 @@ function ShorterLink() {
       })
       .catch((e) => {
         setvalue('');
-        console.error(e);
+        return e;
       });
   };
 
