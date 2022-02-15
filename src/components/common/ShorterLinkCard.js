@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 
-function ShorterLinkCard() {
+function ShorterLinkCard({ item: { result } }) {
+  const [copy, setcopy] = useState(false);
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(result.full_short_link);
+    setcopy(true);
+  };
   return (
     <div className="card">
-      <a href="https://www.frontendmentor.io">https://www.frontendmentor.io</a>
+      <a href={result.original_link}>{result.original_link}</a>
       <div className="card-body">
-        <p className="res-text" href="https://relink/k4lKyk">
-          https://relink/k4lKyk
-        </p>
-        <Button className="primary" label="Copy" />
+        <p className="res-text">{result.full_short_link}</p>
+        <Button
+          disabled={copy}
+          className="primary"
+          label={copy ? 'Copied!' : 'Copy'}
+          onClick={() => handleCopy()}
+        />
       </div>
     </div>
   );

@@ -152,22 +152,36 @@ a {
     background-repeat: no-repeat;
     background-position: inherit;
     background-color: $color-primary-dark;
-    @extend %flux-layout;
-    input {
-      width: 90%;
-
-      padding: 1em;
-      border-radius: 0.5em;
-      height: $input-height;
+    .form-group {
+      @extend %flux-layout;
+      input {
+        width: 88%;
+        padding: 1em;
+        border-radius: 0.5em;
+        height: $input-height;
+        &.error:focus-visible {
+          outline-color: red;
+          color: red;
+        }
+        &.error::placeholder {
+          color: red;
+          opacity: 0.3;
+        }
+      }
+      button {
+        height: $input-height;
+      }
     }
-    button {
-      height: $input-height;
+    .error {
+      color: red;
     }
     @media only screen and (max-width: $normal-screen) {
-      flex-direction: column;
-      input {
-        width: 100%;
-        margin-bottom: 0.6rem;
+      .form-group {
+        flex-direction: column;
+        input {
+          width: 100%;
+          margin-bottom: 0.6rem;
+        }
       }
     }
   }
@@ -178,10 +192,14 @@ a {
       padding: 1em;
       border-radius: 0.5em;
       margin: 1em 0;
-      .res-text {
-        margin-right: 1em;
-        color: $color-primary-cyan;
+      .card-body {
+        @extend %flux-layout;
+        .res-text {
+          margin-right: 1em;
+          color: $color-primary-cyan;
+        }
       }
+
       @media only screen and (max-width: $mobile-screen) {
         flex-direction: column;
         align-items: flex-start;

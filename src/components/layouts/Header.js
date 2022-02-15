@@ -35,7 +35,7 @@ function Header() {
       <Button
         className="icon-btn"
         icon={<img src={menu} alt="menu icon" />}
-        callback={() => isOpenActions.toggle(!isOpen)}
+        onClick={() => isOpenActions.toggle(!isOpen)}
         style={{ width: 'normal' }}
       />
     </header>
