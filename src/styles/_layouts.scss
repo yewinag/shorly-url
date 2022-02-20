@@ -1,0 +1,406 @@
+html {
+  box-sizing: border-box;
+  font-family: $fontFamily;
+  font-size: $regular;
+  font-weight: $font-weight-normal;
+  color: $color-natural-grayish;
+}
+// commom layouts
+%app-container {
+  padding: 0 0.938em;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $normal-screen;
+  @media only screen and (min-width: $mobile-screen) and (max-width: $normal-screen) {
+  }
+}
+%flux-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+%layout-break {
+  padding: 3em 0.938em;
+}
+%grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+}
+// global anchor
+a {
+  &:hover {
+    color: $color-narural-dark-violet;
+  }
+}
+// background layout
+.article-row {
+  background-color: $color-layout-gray;
+}
+.app-container {
+  @extend %app-container;
+}
+//   header layout
+.header {
+  @extend %app-container;
+  @extend %flux-layout;
+  justify-content: space-between;
+  min-height: 4rem;
+  .nav {
+    @extend %flux-layout;
+    ul {
+      list-style: none;
+      display: inherit;
+      margin-left: 1rem;
+      li {
+        margin: 0 0 0 2rem;
+      }
+    }
+  }
+  .icon-btn {
+    img {
+      height: 1.2rem;
+    }
+  }
+  @media only screen and (min-width: $mobile-screen) {
+    .icon-btn {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: $mobile-screen) {
+    position: relative;
+    .nav {
+      display: none;
+      &.active {
+        display: block;
+      }
+      position: absolute;
+      background-color: $color-narural-dark-violet;
+      top: 4rem;
+      width: 90%;
+      left: 5%;
+      position: absolute;
+      border-radius: 0.6rem;
+      text-align: center;
+      padding: 2rem;
+      color: $color-narural-white;
+      font-weight: bold;
+      ul {
+        margin: 0;
+        border-bottom: 0.02rem solid $color-natural-gray;
+        li {
+          margin: 0;
+          padding: 1rem 0;
+          a {
+            &:hover,
+            &:focus {
+              color: $color-narural-white;
+            }
+          }
+        }
+      }
+      button {
+        margin: 1rem 0;
+      }
+    }
+    .icon-btn {
+      display: block;
+    }
+  }
+}
+// header article
+.article {
+  background-color: inherit;
+  .article-header {
+    @extend %app-container;
+    @extend %flux-layout;
+    @extend %layout-break;
+    h1 {
+      font-weight: $font-weight-bold;
+      font-size: $heading-1;
+      color: $color-narural-dark-violet;
+      line-height: $heading-height;
+    }
+    h2 {
+      font-size: $regular;
+      padding: 0 0.5em;
+    }
+    @media only screen and (max-width: $normal-screen) {
+      flex-direction: column-reverse;
+      text-align: center;
+      h1 {
+        font-size: $heading-2;
+        padding: 0.6em 3.6rem;
+      }
+      h2 {
+        padding: 0.6em 3.6rem;
+      }
+      button {
+        max-width: 50%;
+      }
+    }
+  }
+}
+// article search form
+.article-search-form {
+  @extend %app-container;
+  @extend %layout-break;
+  form {
+    padding: 1.7em;
+    border-radius: 0.25em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-color: $color-primary-dark;
+    .form-group {
+      @extend %flux-layout;
+      input {
+        width: 88%;
+        padding: 1em;
+        border-radius: 0.5em;
+        height: $input-height;
+        &.error:focus-visible {
+          outline-color: red;
+          color: red;
+        }
+        &.error::placeholder {
+          color: red;
+          opacity: 0.3;
+        }
+      }
+      button {
+        height: $input-height;
+      }
+    }
+    .error {
+      color: red;
+    }
+    @media only screen and (max-width: $normal-screen) {
+      .form-group {
+        flex-direction: column;
+        input {
+          width: 100%;
+          margin-bottom: 0.6rem;
+        }
+      }
+    }
+  }
+  .result-section {
+    .card {
+      @extend %flux-layout;
+      background-color: $color-narural-white;
+      padding: 1em;
+      border-radius: 0.5em;
+      margin: 1em 0;
+      .card-body {
+        @extend %flux-layout;
+        .res-text {
+          margin-right: 1em;
+          color: $color-primary-cyan;
+        }
+      }
+
+      @media only screen and (max-width: $mobile-screen) {
+        flex-direction: column;
+        align-items: flex-start;
+        a {
+          padding: 0.6rem 0;
+          border-bottom: 0.1rem solid $color-natural-gray;
+          width: 100%;
+          overflow: hidden;
+        }
+        .card-body {
+          padding: 0.6rem 0;
+          width: 100%;
+          p {
+            padding: 0.6rem 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// article-static
+.static {
+  header {
+    text-align: center;
+    padding: 1em 0;
+    h4 {
+      font-size: $heading-3;
+      color: $color-narural-dark-blue;
+      font-weight: bold;
+    }
+    p {
+      padding: 0 30em;
+      font-size: inherit;
+    }
+    @media (min-width: $mobile-screen) and (max-width: $normal-screen) {
+      p {
+        padding: 0;
+      }
+    }
+    @media only screen and (max-width: $mobile-screen) {
+      p {
+        padding: 0;
+      }
+    }
+  }
+  .service {
+    @extend %grid-layout;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2em 0;
+    .service-card {
+      padding: 2em;
+      background-color: $color-narural-white;
+      border-radius: 0.4rem;
+      &:nth-child(1) {
+        grid-row: 1/3 span;
+      }
+      &:nth-child(2) {
+        grid-row: 2/3 span;
+      }
+      &:nth-child(3) {
+        grid-row: 3/3 span;
+      }
+      picture {
+        width: 4em;
+        height: 4em;
+        display: flex;
+        align-items: center;
+        background: $color-narural-dark-violet;
+        border-radius: 50%;
+        margin-top: -4.2em;
+        img {
+          margin: auto;
+        }
+      }
+      h4 {
+        padding: 1em 0;
+        font-size: $heading-4;
+        font-weight: bold;
+        color: $color-narural-dark-violet;
+      }
+    }
+    @media only screen and (min-width: $mobile-screen) and (max-width: $normal-screen) {
+      display: block;
+      grid-template-columns: auto;
+    }
+    @media only screen and (max-width: $mobile-screen) {
+      display: block;
+      grid-template-columns: auto;
+      .service-card {
+        text-align: center;
+        margin-bottom: 4rem;
+        picture {
+          margin: auto;
+          margin-top: -4rem;
+        }
+      }
+    }
+  }
+}
+// static layout
+.boost-article {
+  background-repeat: round;
+  background-color: $color-narural-dark-blue;
+
+  .boost {
+    @extend %layout-break;
+    @extend %flux-layout;
+    justify-content: center;
+    flex-direction: column;
+    h4 {
+      font-size: $heading-3;
+      color: $color-narural-white;
+    }
+    @media only screen and (max-width: $mobile-screen) {
+      h4 {
+        font-size: $heading-4;
+        padding: 1rem 0;
+      }
+      button {
+        max-width: 50%;
+      }
+    }
+  }
+}
+// footer layout
+.footer {
+  background-color: $color-narural-dark-violet;
+  color: $color-narural-white;
+  @extend %layout-break;
+  .footer-section {
+    @extend %app-container;
+    @extend %flux-layout;
+    align-items: normal;
+    .footer-logo {
+      font-size: $heading-4;
+      font-weight: bold;
+      flex: 1;
+    }
+    .footer-link-layout {
+      flex: 2;
+      @extend %flux-layout;
+      align-items: normal;
+      h5 {
+        font-weight: bold;
+      }
+    }
+    .footer-social {
+      flex: 1;
+      @extend %flux-layout;
+      justify-content: center;
+      align-items: normal;
+      .icon {
+        width: 2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+      }
+      a {
+        &:hover,
+        &:focus {
+          filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+            brightness(104%) contrast(97%);
+        }
+      }
+    }
+    @media only screen and (max-width: $mobile-screen) {
+      flex-direction: column;
+      .footer-logo {
+        text-align: center;
+        padding: 1.4rem 0;
+      }
+      .footer-link-layout {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.4rem 0;
+      }
+      .footer-link-social {
+        padding: 1.4rem 0;
+      }
+    }
+  }
+  ul {
+    font-size: 0.8rem;
+    li {
+      padding: 0.4rem 0;
+      a {
+        &:hover {
+          color: $color-primary-cyan;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: $normal-screen) {
+    .footer-section {
+      display: block;
+    }
+  }
+  @media only screen and (max-width: $mobile-screen) {
+    .footer-section {
+      display: block;
+    }
+  }
+}
+//

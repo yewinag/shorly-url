@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+$color-primary-cyan: hsl(180, 66%, 49%);
+$color-primary-dark: hsl(257, 27%, 26%);
+$color-secondary: hsl(0, 87%, 67%);
+$color-narural-white: #ffffff;
+$color-layout-gray: #efefef;
+$color-natural-gray: hsl(0, 0%, 75%);
+$color-natural-grayish: hsl(257, 7%, 63%);
+$color-narural-dark-blue: hsl(255, 11%, 22%);
+$color-narural-dark-violet: hsl(260, 8%, 14%);
+
+// Font Variables
+$fontFamily: 'Poppins', sans-serif;
+//@font-weight
+$font-weight-normal: 500;
+$font-weight-bold: 700;
+// @font-size
+$heading-1: 5rem;
+$heading-2: 3rem;
+$heading-3: 2rem;
+$heading-4: 1.3rem;
+$regular: 1.125rem; // normal text
+
+// Responsive Breakpoints
+$mobile-screen: 48rem;
+$web-screen: 90rem;
+$normal-screen: 73.125rem;
+// @height
+$heading-height: 1em;
+$input-height: 2.5em;
+// @border width
+$border-width-1: 0.125em;
+$border-width-2: 0.25em;
